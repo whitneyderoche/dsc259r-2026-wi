@@ -7517,8 +7517,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">dsc80_utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">lec15_util</span> <span class="k">as</span> <span class="nn">util</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dsc80_utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">lec15_util</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">util</span>
 </pre></div>
 </div>
 </div>
@@ -7531,41 +7531,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Lecture-15-%E2%80%93-Pipelines,-Multicollinearity,-and-Generalization">Lecture 15 – Pipelines, Multicollinearity, and Generalization<a class="anchor-link" href="#Lecture-15-%E2%80%93-Pipelines,-Multicollinearity,-and-Generalization">¶</a></h1><h2 id="DSC-80,-Fall-2024">DSC 80, Fall 2024<a class="anchor-link" href="#DSC-80,-Fall-2024">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=22824200">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Announcements-%F0%9F%93%A3">Announcements 📣<a class="anchor-link" href="#Announcements-%F0%9F%93%A3">¶</a></h3><ul>
-<li>Lab 7 due tomorrow.</li>
-<li>Final Project Checkpoint 1 due Tuesday.</li>
-<li>Midterm Rdemption due Wednesday.</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd851d5b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Agenda-%F0%9F%93%86">Agenda 📆<a class="anchor-link" href="#Agenda-%F0%9F%93%86">¶</a></h3><ul>
-<li>Pipelines.</li>
-<li>Multicollinearity.</li>
-<li>Generalization.<ul>
-<li>Bias and variance.</li>
-<li>Train-test splits.</li>
-</ul>
-</li>
-</ul>
+<h1 id="Lecture-15-%E2%80%93-Pipelines,-Multicollinearity,-and-Generalization">Lecture 15 – Pipelines, Multicollinearity, and Generalization<a class="anchor-link" href="#Lecture-15-%E2%80%93-Pipelines,-Multicollinearity,-and-Generalization">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7803,7 +7769,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 </pre></div>
 </div>
 </div>
@@ -7817,8 +7783,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">pl</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">'one-hot'</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">()),</span>
@@ -8544,7 +8510,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
 </pre></div>
 </div>
 </div>
@@ -8829,7 +8795,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [72]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Binarizer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Binarizer</span>
 
 <span class="n">preproc</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
     <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
@@ -9484,7 +9450,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [77]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">FunctionTransformer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionTransformer</span>
 </pre></div>
 </div>
 </div>
@@ -9563,8 +9529,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [80]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_transformer</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_column_transformer</span>
 
 <span class="n">preproc</span> <span class="o">=</span> <span class="n">make_column_transformer</span><span class="p">(</span>
     <span class="p">(</span><span class="n">Binarizer</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span><span class="s1">'size'</span><span class="p">]),</span>
@@ -10026,8 +9992,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="An-example-Pipeline">An example <code>Pipeline</code><a class="anchor-link" href="#An-example-Pipeline">¶</a></h3><p>One of the transformers we used was the <code>StandardScaler</code> transformer, which <strong>standardizes</strong> columns.</p>
-<p>$$z(x_i) = \frac{x_i - \text{mean of } x}{\text{SD of } x}$$</p>
-<p>Let's build a <code>Pipeline</code> that:</p>
+$$z(x_i) = \frac{x_i - \text{mean of } x}{\text{SD of } x}$$<p>Let's build a <code>Pipeline</code> that:</p>
 <ul>
 <li>Takes in the <code>'total_bill'</code> and <code>'size'</code> features of <code>tips</code>.</li>
 <li>Standardizes those features.</li>
@@ -10060,7 +10025,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [82]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 
 <span class="n">model_with_std</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
     <span class="n">StandardScaler</span><span class="p">(),</span>
@@ -10537,7 +10502,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [87]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">root_mean_squared_error</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">root_mean_squared_error</span>
 
 <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">model_with_std</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
 </pre></div>
@@ -11082,9 +11047,9 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li>There are other models where standardizing your features <em>will</em> improve performance, because the methods assume features are standardized.<ul>
-<li>Regularized linear regression (see <a href="https://dsc140a.com">DSC 140A</a>).</li>
-<li>PCA (assumes centered data, not necessarily standardized: see <a href="https://dsc140b.com">DSC 140B</a>).</li>
-<li>Clustering algorithms, e.g. $k$-means clustering (saw in DSC 40A!).</li>
+<li>Regularized linear regression.</li>
+<li>PCA.</li>
+<li>Clustering algorithms, e.g. $k$-means clustering.</li>
 </ul>
 </li>
 </ul>
@@ -11099,7 +11064,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>There <em>is</em> a benefit to standardizing features when performing vanilla linear regression, as we saw in DSC 40A: the features are brought to the same scale, so the coefficients can be compared directly.</li>
+<li>There <em>is</em> a benefit to standardizing features when performing vanilla linear regression: the features are brought to the same scale, so the coefficients can be compared directly.</li>
 </ul>
 </div>
 </div>
@@ -11184,7 +11149,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputPrompt jp-InputArea-prompt">In [99]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">is_weekend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_weekend</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="c1"># The input to is_weekend is a Series!</span>
     <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">'Thur'</span><span class="p">:</span> <span class="s1">'Weekday'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">:</span> <span class="s1">'Weekday'</span><span class="p">})</span>
 </pre></div>
@@ -11712,8 +11677,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="alert alert-warning">
-<h3>Question 🤔 (Answer at <a href="https://dsc80.com/q">dsc80.com/q</a>)</h3>
-<p>Code: <code>weights</code></p>
+<h3>Question 🤔 </h3>
 </div>
 <p>How many weights does this linear model have?</p>
 </div>
@@ -11892,7 +11856,7 @@ if (outputEl) {{
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Motivating-example">Motivating example<a class="anchor-link" href="#Motivating-example">¶</a></h3><p>Suppose we fit a simple linear regression model that uses <strong>height in inches</strong> to predict <strong>weight in pounds</strong>.</p>
-<p>$$\text{predicted weight (pounds)} = w_0 + w_1 \cdot \text{height (inches)}$$</p>
+$$\text{predicted weight (pounds)} = w_0 + w_1 \cdot \text{height (inches)}$$
 </div>
 </div>
 </div>
@@ -12413,7 +12377,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Now, suppose we fit another regression model, that uses <strong>height in inches</strong> AND <strong>height in centimeters</strong> to predict weight.</p>
-<p>$$\text{predicted weight (pounds)} = w_0 + w_1 \cdot \text{height (inches)} + w_2 \cdot \text{height (cm)}$$</p>
+$$\text{predicted weight (pounds)} = w_0 + w_1 \cdot \text{height (inches)} + w_2 \cdot \text{height (cm)}$$
 </div>
 </div>
 </div>
@@ -12969,7 +12933,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>$$\text{predicted weight (pounds)} = -80 + 3 \cdot \text{height (inches)}$$</p>
+$$\text{predicted weight (pounds)} = -80 + 3 \cdot \text{height (inches)}$$
 </div>
 </div>
 </div>
@@ -12981,7 +12945,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In the second model, we have:</p>
-<p>$$\begin{align*}\text{predicted weight (pounds)} &amp;= w_0^* + w_1^* \cdot \text{height (inches)} + w_2^* \cdot \text{height (cm)} \\ &amp;= w_0^* + w_1^* \cdot \text{height (inches)} + w_2^* \cdot \big( 2.54^* \cdot \text{height (inches)} \big) \\ &amp;= w_0^* + \left(w_1^* + 2.54 \cdot w_2^* \right) \cdot \text{height (inches)} \end{align*}$$</p>
+$$\begin{align*}\text{predicted weight (pounds)} &amp;= w_0^* + w_1^* \cdot \text{height (inches)} + w_2^* \cdot \text{height (cm)} \\ &amp;= w_0^* + w_1^* \cdot \text{height (inches)} + w_2^* \cdot \big( 2.54^* \cdot \text{height (inches)} \big) \\ &amp;= w_0^* + \left(w_1^* + 2.54 \cdot w_2^* \right) \cdot \text{height (inches)} \end{align*}$$
 </div>
 </div>
 </div>
@@ -13036,7 +13000,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>$$\text{predicted weight} = -80 - 10 \cdot \text{height (inches)} + \frac{13}{2.54} \cdot \text{height (cm)}$$</p>
+$$\text{predicted weight} = -80 - 10 \cdot \text{height (inches)} + \frac{13}{2.54} \cdot \text{height (cm)}$$
 </div>
 </div>
 </div>
@@ -13047,7 +13011,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>$$\text{predicted weight} = -80 + 10 \cdot \text{height (inches)} - \frac{7}{2.54} \cdot \text{height (cm)}$$</p>
+$$\text{predicted weight} = -80 + 10 \cdot \text{height (inches)} - \frac{7}{2.54} \cdot \text{height (cm)}$$
 </div>
 </div>
 </div>
@@ -13248,11 +13212,11 @@ dtype: float64</pre>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Suppose we have the following fitted model:</p>
-<p>$$
+$$
 \begin{aligned}
 H(x) = 1 + 2 \cdot (\text{smoker==Yes}) - 2 \cdot (\text{smoker==No})
 \end{aligned}
-$$</p>
+$$
 </div>
 </div>
 </div>
@@ -13264,11 +13228,11 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>This is equivalent to:</p>
-<p>$$
+$$
 \begin{aligned}
 H(x) = 10 - 7 \cdot (\text{smoker==Yes}) - 11 \cdot (\text{smoker==No})
 \end{aligned}
-$$</p>
+$$
 </div>
 </div>
 </div>
@@ -13331,10 +13295,8 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="alert alert-warning">
-<h3>Question 🤔 (Answer at <a href="https://dsc80.com/q">dsc80.com/q</a>)</h3>
-<p>Code: <code>wi23q9</code></p>
+<h3>Question 🤔 </h3>
 </div>
-<p>(Wi23 Final Q9)</p>
 <p>One piece of information that may be useful as a feature is the proportion of SAT test takers in a state in a given year that qualify for free lunches in school. The Series <code>lunch_props</code> contains 8 values, each of which are either <code>"low"</code>, <code>"medium"</code>, or <code>"high"</code>. Since we can’t use strings as features in a model, we decide to encode these strings using the following Pipeline:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Note: The FunctionTransformer is only needed to change the result</span>
 <span class="c1"># of the OneHotEncoder from a "sparse" matrix to a regular matrix</span>
@@ -13529,7 +13491,7 @@ $$</p>
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span> <span class="c1"># For reproducibility.</span>
 
-<span class="k">def</span> <span class="nf">sample_from_pop</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_from_pop</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
@@ -13627,7 +13589,7 @@ if (outputEl) {{
 <div class="jp-InputPrompt jp-InputArea-prompt">In [120]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 </pre></div>
 </div>
 </div>
@@ -13983,9 +13945,9 @@ if (outputEl) {{
 <p>Here, suppose:</p>
 <ul>
 <li>The <span style="color:#c6283f"><b>red bulls-eye</b></span> represents your <strong>true weight and height</strong> 🧍.</li>
-<li>The <span style="color:#080c6f"><b>dark blue darts</b></span> represent <strong>predictions of your weight and height</strong> using different models that were fit on the same DGP.
-<br/></li>
+<li>The <span style="color:#080c6f"><b>dark blue darts</b></span> represent <strong>predictions of your weight and height</strong> using different models that were fit on the same DGP.</li>
 </ul>
+<br/>
 <center><img alt="No description has been provided for this image" src="imgs/image_5.png" width="40%"/></center>
 <p>We'd like our models to be in the top left, but in practice that's hard to achieve!</p>
 </div>
@@ -14010,12 +13972,11 @@ if (outputEl) {{
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li>In DSC 40A, we started using <strong>empirical risk minimization</strong> to find optimal model parameters $w^*$:</li>
+<li>We use <strong>empirical risk minimization</strong> to find optimal model parameters $w^*$:</li>
 </ul>
-<p>$$
-\text{choose the $w$ such that } \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2 \text{ is minimized}$$</p>
-<center>or, equivalently:</center>
-<p>$$w^* = \underset{w}{\text{argmin}} \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$</p>
+$$
+\text{choose the $w$ such that } \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2 \text{ is minimized}$$<center>or, equivalently:</center>
+$$w^* = \underset{w}{\text{argmin}} \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$
 </div>
 </div>
 </div>
@@ -14041,8 +14002,8 @@ if (outputEl) {{
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li>What we really want is for the <strong>expected loss for a new data point $(x_{\text{new}}, y_{\text{new}})$, drawn from the same population as the training set, to be small</strong>. That is, we want
-$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2$$
-to be minimized. The quantity above is called <strong>risk</strong>.</li>
+  $$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2$$
+  to be minimized. The quantity above is called <strong>risk</strong>.</li>
 </ul>
 </div>
 </div>
@@ -14073,7 +14034,7 @@ to be minimized. The quantity above is called <strong>risk</strong>.</li>
 <ul>
 <li>In general, we don't know the entire population distribution of $x$s and $y$s, so we can't compute risk exactly. That's why we compute <strong>empirical risk</strong>!</li>
 </ul>
-<p>$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 \approx \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$</p>
+$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 \approx \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$
 </div>
 </div>
 </div>
@@ -14085,7 +14046,7 @@ to be minimized. The quantity above is called <strong>risk</strong>.</li>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="The-bias-variance-decomposition">The bias-variance decomposition<a class="anchor-link" href="#The-bias-variance-decomposition">¶</a></h3><p>Risk can be decomposed as follows:</p>
-<p>$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 = \text{model bias}^2 + \text{model variance} + \text{observation error}$$</p>
+$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 = \text{model bias}^2 + \text{model variance} + \text{observation error}$$
 </div>
 </div>
 </div>
@@ -14152,7 +14113,7 @@ to be minimized. The quantity above is called <strong>risk</strong>.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Navigating-the-bias-variance-tradeoff">Navigating the bias-variance tradeoff<a class="anchor-link" href="#Navigating-the-bias-variance-tradeoff">¶</a></h3><p>$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 = \text{model bias}^2 + \text{model variance} + \text{observation error}$$</p>
+<h3 id="Navigating-the-bias-variance-tradeoff">Navigating the bias-variance tradeoff<a class="anchor-link" href="#Navigating-the-bias-variance-tradeoff">¶</a></h3>$$\mathbb{E}[y_{\text{new}} - H(x_{\text{new}})]^2 = \text{model bias}^2 + \text{model variance} + \text{observation error}$$
 </div>
 </div>
 </div>
@@ -14232,8 +14193,7 @@ to be minimized. The quantity above is called <strong>risk</strong>.</li>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="alert alert-warning">
-<h3>Question 🤔 (Answer at <a href="https://dsc80.com/q">dsc80.com/q</a>)</h3>
-<p>Code: <code>fa23q94</code></p>
+<h3>Question 🤔 </h3>
 </div>
 <p>(Fa23 Final 9.4)</p>
 <p>Determine how each change below affects model bias and variance compared to this model:</p>
@@ -14379,7 +14339,7 @@ to be minimized. The quantity above is called <strong>risk</strong>.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [125]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
