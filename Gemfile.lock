@@ -227,6 +227,7 @@ GEM
     octokit (4.25.1)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
+    openssl (3.3.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (5.0.4)
@@ -264,9 +265,11 @@ GEM
 PLATFORMS
   arm64-darwin-22
   arm64-darwin-23
+  arm64-darwin-24
 
 DEPENDENCIES
   github-pages
+  openssl
   webrick (~> 1.7)
 
 BUNDLED WITH

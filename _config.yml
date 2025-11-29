@@ -21,6 +21,10 @@ baseurl: '/' # the subpath of your site, e.g. /blog
 author: DSC 259R
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
 
+# urls that will get embedded within pages
+urls:
+  github: 'https://github.com/dsc-courses/dsc259r-2026-wi'
+
 # Theme settings
 remote_theme: just-the-docs/just-the-docs@v0.4.0.rc3
 color_scheme: bluecsd

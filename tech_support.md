@@ -9,7 +9,7 @@ nav_order: 4
 {:.no_toc}
 
 ## Table of contents
-{: .no_toc .text-delta }
+{: .no_toc .text-delta}
 
 1. TOC
 {:toc}
@@ -18,25 +18,45 @@ nav_order: 4
 
 ## Introduction
 
-In DSC 10, you worked on assignments on DataHub, a computing platform that already had all of the Python packages you needed installed. But in the real world, you'll be expected to set up and maintain a Python environment locally – that is, on your own computer – and so that's what we'll have you do here. **That's right – no DataHub!** You already have experience writing and running code locally from DSC 20 and DSC 30; setting up your environment for DSC 80 will be slightly more involved than it was there, but most of these steps only need to be done once.
+In the real world, you'll be expected to set up and maintain a Python
+environment locally – that is, on your own computer – and so that's what we'll
+have you do in this course as well.
 
-There has been a lot written about how to set up a Python environment, so we won't reinvent the wheel. This page will only be a summary; Google will be your main resource. But always feel free to come to a staff member's office hours if you have a question about setting up your environment, using Git, or similar — we're here to help.
-
-<!-- [This video](https://www.loom.com/share/0ea254b85b2745e59322b5e5a8692e91?sid=b77c5c2d-0c24-40fb-8cfc-8574d49d9019) walks through most of the steps here, but it's **not** a substitute for reading this page carefully.
-
-<div style="position: relative; padding-bottom: 64.92335437330928%; height: 0;"><iframe src="https://www.loom.com/embed/0ea254b85b2745e59322b5e5a8692e91?sid=96bb8188-9783-4878-bc1a-5f6946b20a61" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
+There has been a lot written about how to set up a Python environment, so we
+won't reinvent the wheel. This page will only be a summary; Google will be your
+main resource. But always feel free to come to a staff member's office hours if
+you have a question about setting up your environment, using Git, or similar —
+we're here to help.
 
 ## Environments and Package Managers
 
-For this class, the software you'll need includes Python 3.13, a few specific Python packages, Git, and a text editor.
+For this class, the software you'll need includes Python 3.12, `uv`, a few
+specific Python packages, Git, and a text editor.
 
-Gradescope has an **environment** which it uses to autograde your work. You can think of an environment as a combination of a Python version and _specific_ versions of Python packages that is isolated from the rest of your computer. In practice, developers create different environments for different projects, so that they can use different versions of packages in different projects.
+Gradescope has an **environment** which it uses to autograde your work. You can
+think of an environment as a combination of a Python version and _specific_
+versions of Python packages that is isolated from the rest of your computer. In
+practice, developers create different environments for different projects, so
+that they can use different versions of packages in different projects.
 
-We're going to have you replicate the environment Gradescope has on your computer. The reason for this is so that your code behaves the same when you submit it to Gradescope as it does when you work on it on your computer. For example, our Gradescope environment uses `numpy` version `2.1.1`; if you install a different version of `numpy` on your computer, for example, you might see different results than Gradescope sees.
+We're going to have you replicate the environment Gradescope has on your
+computer. The reason for this is so that your code behaves the same when you
+submit it to Gradescope as it does when you work on it on your computer. For
+example, our Gradescope environment uses `numpy` version `2.1.1`; if you install
+a different version of `numpy` on your computer, for example, you might see
+different results than Gradescope sees.
 
-How do you install packages, then? `pip` is a common choice, but even though it's widely used, it lacks built-in support for creating isolated environments. This limitation makes it challenging to maintain version consistency and avoid conflicts between packages. **Consequently, we do not recommend relying solely on `pip install` for environment management**, as it may inadvertently introduce incompatible package versions.
+How do you install packages, then? `pip` is a common choice, but even though
+it's widely used, it lacks built-in support for creating isolated environments.
+This limitation makes it challenging to maintain version consistency and avoid
+conflicts between packages. **Consequently, we do not recommend using `pip` at
+all for environment management**, as it may inadvertently introduce incompatible
+package versions.
 
-[`uv`][uv], on the other hand, is a powerful tool that not only installs packages but also manages environments effortlessly. It allows you to create isolated environments and ensures compatibility among the packages within those environments.
+[`uv`][uv], on the other hand, is a powerful tool that not only installs
+packages but also manages environments effortlessly. It allows you to create
+isolated environments and ensures compatibility among the packages within those
+environments.
 
 [uv]: https://docs.astral.sh/uv/
 
@@ -44,13 +64,55 @@ How do you install packages, then? `pip` is a common choice, but even though it'
 
 ## Replicating the Gradescope Environment
 
-Below, we're going to walk you through how to create the same environment that Gradescope uses.
+Below, we're going to walk you through how to create the same environment that
+Gradescope uses.
+
+### Step 0 (Windows only): Windows Subsystem for Linux
+
+{: .yellow}
+
+> You can skip this step if you are not using a Windows machine, or if you
+> already have WSL set up.
+
+If you are using a Windows machine, we will use the Windows Subsystem for Linux
+(WSL) to give you a Linux terminal. This isn't absolutely necessary to follow
+along with the course, but it will make the rest of the setup much easier. We
+will not support or document other setups for the course.
+
+1. Open PowerShell and run:
+
+   ```bash
+   wsl --install
+   ```
+
+   This will install the latest version of Ubuntu.
+
+   For more details, see the [Microsoft documentation][wsl].
+
+   [wsl]: https://learn.microsoft.com/en-us/windows/wsl/setup/environment
+
+1. Now, launch the Ubuntu terminal by making a new tab in the Windows Terminal
+   and selecting "Ubuntu" from the dropdown, or by going to your Start Menu and
+   opening "Ubuntu". Ubuntu is a Linux distribution that is installed by default
+   with WSL.
+
+1. Now, install `git`. In your Ubuntu terminal, run:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install git
+   ```
+
+   For more details, see the [Git documentation for WSL][gitwsl].
+
+   [gitwsl]: https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
+
+{: .yellow}
+
+> All future setup steps will assume you are either using the Ubuntu, macOS, or
+> Linux terminal.
 
 ### Step 1: Install `uv`
-
-The way to do this depends on whether you're on a Unix-like platform (macOS or Linux) or on Windows.
-
-**Unix-like platforms (macOS or Linux)**:
 
 Run the `uv` installer. To do this, open your Terminal and run:
 
@@ -58,7 +120,9 @@ Run the `uv` installer. To do this, open your Terminal and run:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-After this step, check that `uv` is available by running the `uv` command:
+After this step, check that `uv` is available by running the `uv` command. If
+this command doesn't work, you may need to start a new terminal window and close
+your old one.
 
 ```
 $ uv
@@ -71,110 +135,110 @@ Usage: uv [OPTIONS] <COMMAND>
 
 You should see a help menu listing the available commands.
 
-**Windows**:
+### Step 2: Clone the course repository
 
-Run the `uv` installer. To do this, open PowerShell and run:
+Clone the course GitHub repository, which not only contains the course
+materials, but also a `pyproject.toml` file with the necessary details
+to configure your environment:
 
-```
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-After this step, check that `uv` is available by running the `uv` command:
-
-```
-PS> uv
-An extremely fast Python package manager.
-
-Usage: uv [OPTIONS] <COMMAND>
-
-...
+```bash
+git clone {{ site.urls.github }}
 ```
 
-You should see a help menu listing the available commands.
+This will create a folder called `{{ site.urls.github | split: '/' | last }}`.
+If you look at the
+`pyproject.toml` file inside, you'll see that it contains a specific Python
+version (`python=3.12`) along with specific package versions (like
+`pandas==2.2.3` and `requests==2.32.3`, for example).
 
-### Step 2: Download [`pyproject.toml`][toml]
+### Step 3: Sync the environment
 
-[toml]: https://github.com/dsc-courses/dsc259r-2026-wi/blob/main/pyproject.toml
-
-[This file][toml] contains the necessary details to configure your environment. If you take a look at it, you'll see that it contains a specific Python version (`python=3.13`) along with specific package versions (like `pandas==2.2.3` and `requests==2.32.3`, for example).
-
-Download the file, and then put it in the folder where you want to store your work.
-
-### Step 3: Create a new environment
-
-To create the environment, navigate to your folder, then in your Terminal, run:
+To sync the environment, navigate to the cloned repository folder (`cd {{
+site.urls.github | split: '/' | last }}`), then in your Terminal, run:
 
 ```
 uv sync
 ```
 
-You should see that `uv` will download and install the packages we need for the course.
+You should see that `uv` will download and install the packages we need for the
+course.
+
+### Step 4: Check that everything is working
+
+To check that everything is working, you can run the following command in your Terminal:
+
+```bash
+uv run otter --version
+# should print info about the Python version, and display a line showing that the
+# otter-grader version is 3.1.4
+```
 
 ---
 
 ## Working on Assignments
 
-The setup instructions above only need to be run once. But there's one more thing you need to do **every time you open a new terminal window**: activate the environment.
+The setup instructions above only need to be run once.
 
-For macOS/Linux, run:
-
-```
-source .venv/bin/activate
-```
-
-For Windows, run:
-
-```
-.venv\Scripts\activate
-```
-
-Now, you can open Jupyter Lab, by using the `jupyter lab` command in your Terminal.
+Now, you can open Jupyter Lab, by using the `uv run jupyter lab` command in your
+Terminal. You can also use VSCode to open notebooks by setting the Python interpreter to the one installed
+by `uv`.
 
 ### Using Git
 
-All of our course materials, including your assignments, are hosted on
-GitHub in [this Git repository](https://github.com/dsc-courses/dsc80-2024-fa). This means that you'll need to download and use
-[Git](https://git-scm.com/) in order to work with the course
-materials.
+All of our course materials, including your assignments, are hosted on GitHub in
+[this Git repository]({{ site.urls.github }}).
 
 Git is a _version control system_. In short, it is used to keep track of
 the history of a project. With Git, you can go back in time to any
 previous version of your project, or even work on two different versions
 (or \"branches\") in parallel and \"merge\" them together at some point
-in the future. We\'ll stick to using the basic features of Git in DSC 80.
+in the future. We\'ll stick to using the basic features of Git in this course.
 
-There are Git GUIs, and you can use them for this class. You can also
-use the command-line version of Git. To get started, you\'ll need to
-\"clone\" the course repository. The command to do this is:
+There are Git GUIs, and you can use them for this class. You can also use the
+command-line version of Git. We've already used `git` above to clone the course
+repository.
 
-    git clone https://github.com/dsc-courses/dsc80-2024-fa
-
-This will copy the repository to a directory on your computer. You should only need to do this once.
-
-Moving forward, to bring in the latest version of the repository, in your local repository, run:
+Moving forward, to bring in the latest version of the repository, in your local
+repository, run:
 
 ```
 git pull
 ```
 
-This will **not** overwrite your work. In fact, Git is designed to make it very difficult
-to lose work (although it\'s still possible!).
+This will **not** overwrite your work. In fact, Git is designed to make it very
+difficult to lose work (although it\'s still possible!).
 
 **Merge Conflicts**
 
-You might face issues when using `git pull` regarding merge issues and branches. This is caused by files being updated on your side while we are also changing the [Git repository](https://github.com/dsc-courses/dsc80-2024-fa) by pushing new assignments on our side. Here are some steps you can follow to resolve them:
+You might face issues when using `git pull` regarding merge issues and branches.
+This is caused by files being updated on your side while we are also changing
+the Git repository by pushing new assignments on our side. Here are some steps
+you can follow to resolve them:
 
-NOTE: Whenever working with GitHub pulls, merges, etc., it's a good idea to save your important work locally so that if you accidentally overwrite your files you still have the work saved. **Save your work locally before following the steps below.**
+NOTE: Whenever working with GitHub pulls, merges, etc., it's a good idea to save
+your important work locally so that if you accidentally overwrite your files you
+still have the work saved. **Save your work locally before following the steps
+below.**
 
-1. `git status` shows the current state of your Git working directory and staging area. It's a good sanity check to start with. You will probably see your project and lab files that you have worked on.
+1. `git status` shows the current state of your Git working directory and
+   staging area. It's a good sanity check to start with. You will probably see
+   your project and lab files that you have worked on.
 2. `git add .` will add all your files to be ready to commit.
-3. `git commit -m "some message of your choice"` will commit the files, with some description in the quotations. This can be whatever you want, it won't matter.
+3. `git commit -m "some message of your choice"` will commit the files, with
+   some description in the quotations. This can be whatever you want, it won't
+   matter.
 
-At this stage, if you `git pull`, it should work. You should double-check that you have new files, as well as that your old files are unchanged. If they are changed then you should be able to just copy-paste from your local backup. If this does **not** work then you may have **merge conflicts**, follow the next steps:
+At this stage, if you `git pull`, it should work. You should double-check that
+you have new files, as well as that your old files are unchanged. If they are
+changed then you should be able to just copy-paste from your local backup. If
+this does **not** work then you may have **merge conflicts**, follow the next
+steps:
 
-4. `git checkout --theirs [FILENAME]` will tell git that whenever a conflict occurs in `[FILENAME]` to keep your version. Run this for each file with a conflict.
+4. `git checkout --ours [FILENAME]` will tell git that whenever a conflict
+   occurs in `[FILENAME]` to keep your version. Run this for each file with a
+   conflict.
 5. `git add [FILENAME]` to mark each file with a conflict as resolved.
-6. `git rebase --continue` or `git merge`, depending on the setup.
+6. `git commit` to commit the changes.
 
 ### Choosing a Text Editor or IDE
 
@@ -185,43 +249,36 @@ analyzed/presented in Jupyter Notebooks. Below is an incomplete list of
 IDEs you might want to try. For more information about them, feel free
 to ask the course staff.
 
-If you're curious, Suraj uses VSCode to edit .py files and the vanilla Jupyter environment to edit notebooks.
+If you're curious, the course instructor uses VSCode to edit .py files and the
+JupyterLab environment to edit notebooks.
 
 - The [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) text
   editor: see [below](#jupyterlab). Can be used to edit both notebooks and .py files.
 
-- [VSCode](https://code.visualstudio.com/): Microsoft Visual Studio Code. Currently very popular, and can also be used to edit both notebooks and .py files.
+- [VSCode](https://code.visualstudio.com/): Microsoft Visual Studio Code.
+  Currently very popular, and can also be used to edit both notebooks and .py
+  files.
 
 - [sublime](https://www.sublimetext.com/): A favorite text editor of
   hackers, famous for its multiple cursors. A good, general-purpose
   choice.
 
-- [atom](https://atom.io/): GitHub's editor. Pretty nice fully
-  featured IDE. Can only work locally.
-
 - [PyCharm (IntelliJ)](https://www.jetbrains.com/pycharm/): Those who
   feel at home coding Java. Can only work locally.
 
-- [nano](https://www.nano-editor.org/): available on most unix
-  commandlines (e.g. DataHub Terminal). If you use this for more than
-  changing a word or two, you\'ll hate your life.
-
 - [(neo)vim](https://neovim.io/): lightweight, productive text-editor
-  that might be the most efficient way to edit text, if you can ever
-  learn how to use it. Justin Eldridge's text editor of choice.
-
-- [emacs](https://www.gnu.org/software/emacs/): A text editor for
-  those who prefer a life of endless toil. Endlessly customizable, it
-  promises everything, but you're never good enough to deliver.
+  that runs in the terminal. Very popular among developers, but also has a very
+  steep learning curve.
 
 ### Using VSCode to Run Jupyter Notebooks
 
-Many students like to use VSCode to edit Jupyter Notebooks. If that's you, then you'll need to make sure to activate your `dsc80` conda environment within your notebook in VSCode. Here's how to do that.
+Many students like to use VSCode to edit Jupyter Notebooks. If that's you, then you'll need to make sure
+to activate your environment within your notebook in VSCode. Here's how to do that.
 
 1. Open a Juypter Notebook in VSCode.
 1. Click "Select Kernel" in the top right corner of the window.
 <center><img src="../assets/images/ts-select-kernel.png" width=150></center>
-1. Click "Python Environments" in the toolbar that appears in the middle.
+1. Click "Python: Select Interpreter" in the toolbar that appears in the middle.
 <center><img src="../assets/images/ts-python-environments.png" width=300></center>
 1. Finally, click ".venv (Python 3.13.2)".
 <!-- <center><img src="../assets/images/ts-dsc80-conda.png" width=500></center> -->
